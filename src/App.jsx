@@ -2,26 +2,25 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
+    <div className="main-container">
+      <nav className="navbar">
+        <h1>CS</h1>
+        <div className="nav-links">
+          <h3>About</h3>
+          <h3>Projects</h3>
+          <h3>Contact</h3>
+        </div>
+      </nav>
+
+      <section className="hero-section">
+        <h1 className="glitch" data-text="I am Chandra Sekhar">
+          I am Chandra Sekhar
+        </h1>
+
         <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
+          This is my portfolio site with a glitch animated name effect.
         </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      </section>
     </div>
   );
 }
