@@ -18,7 +18,7 @@ function App() {
         </h1>
 
         <p>
-          This is my portfolio site with a glitch animated name effect.
+        I’m a passionate Frontend Developer focused on building modern, responsive, and user-friendly web applications. With hands-on experience in React.js and Next.js, I transform complex ideas into smooth, interactive interfaces. My journey blends creativity with performance, and I take pride in writing clean, maintainable code. Currently crafting UI magic at Ivoyant and constantly leveling up my skills.
         </p>
       </section>
     </div>
