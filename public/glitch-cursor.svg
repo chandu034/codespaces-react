@@ -1,0 +1,17 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .glitch {
+      animation: glitchAnim 0.4s infinite;
+    }
+
+    @keyframes glitchAnim {
+      0% { transform: translate(0, 0); fill: #2a9d8f; }
+      20% { transform: translate(-1px, 1px); fill: #e63946; }
+      40% { transform: translate(1px, -1px); fill: #2a9d8f; }
+      60% { transform: translate(-1px, 0); fill: #f4a261; }
+      80% { transform: translate(1px, 1px); fill: #2a9d8f; }
+      100% { transform: translate(0, 0); fill: #2a9d8f; }
+    }
+  </style>
+  <polygon class="glitch" points="0,0 24,12 16,14 18,24 10,16 0,0" />
+</svg>
