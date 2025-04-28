@@ -1,37 +1,69 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import About from './pages/About';
+import PageWrapper from './Components/PageWrapper';
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageWrapper>
+              <section className="hero-section">
+                <h1 className="glitch" data-text="I am Chandra Sekhar">
+                  I am Chandra Sekhar
+                </h1>
+                <p>
+                  I’m a passionate Frontend Developer focused on building modern, responsive, and user-friendly web applications. With hands-on experience in React.js and Next.js, I transform complex ideas into smooth, interactive interfaces. My journey blends creativity with performance, and I take pride in writing clean, maintainable code. Currently crafting UI magic at Ivoyant and constantly leveling up my skills.
+                </p>
+              </section>
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageWrapper>
+              <About />
+            </PageWrapper>
+          }
+        />
+        {/* Add more routes like Projects or Contact here if needed */}
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <div className="main-container">
-        <nav className="navbar">
-          <h1>CS</h1>
-          <div className="nav-links">
+    <div className="main-container">
+      <nav className="navbar">
+        <h1>CS</h1>
+        <div className="nav-links">
+          {location.pathname !== '/' && (
             <h3><Link to="/">Home</Link></h3>
+          )}
+          {location.pathname !== '/about' && (
             <h3><Link to="/about">About</Link></h3>
+          )}
+          {location.pathname !== '/projects' && (
             <h3><Link to="/projects">Projects</Link></h3>
+          )}
+          {location.pathname !== '/contact' && (
             <h3><Link to="/contact">Contact</Link></h3>
-          </div>
-        </nav>
+          )}
+        </div>
+      </nav>
 
-        <Routes>
-          <Route path="/" element={
-            <section className="hero-section">
-              <h1 className="glitch" data-text="I am Chandra Sekhar">
-                I am Chandra Sekhar
-              </h1>
-              <p>
-                I’m a passionate Frontend Developer focused on building modern, responsive, and user-friendly web applications. With hands-on experience in React.js and Next.js, I transform complex ideas into smooth, interactive interfaces. My journey blends creativity with performance, and I take pride in writing clean, maintainable code. Currently crafting UI magic at Ivoyant and constantly leveling up my skills.
-              </p>
-            </section>
-          } />
-
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </div>
-    </Router>
+      <AnimatedRoutes />
+    </div>
   );
 }
 

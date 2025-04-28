@@ -35,6 +35,16 @@ function About() {
             </p>
           </div>
         </div>
+
+        <div className="timeline-item">
+          <div className="timeline-dot" />
+          <div className="timeline-content">
+            <h4>Bachelor of Technology in Mechanical Engineering</h4>
+            <p>JNTU Kakinada, India</p>
+            <p><i>2017 – 2021</i></p>
+            <p>Graduated with a CGPA of <strong>8.58</strong>. Developed strong analytical and problem-solving skills that still fuel my work as a developer today.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
