@@ -3,6 +3,8 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import About from './pages/About';
 import PageWrapper from './Components/PageWrapper';
+import Contact from './pages/Contact';
+
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -33,6 +35,15 @@ function AnimatedRoutes() {
             </PageWrapper>
           }
         />
+        <Route
+  path="/contact"
+  element={
+    <PageWrapper>
+      <Contact />
+    </PageWrapper>
+  }
+/>
+
         {/* Add more routes like Projects or Contact here if needed */}
       </Routes>
     </AnimatePresence>
