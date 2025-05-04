@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import PageWrapper from './Components/PageWrapper';
+import Projects from './pages/Projects';
 
 const MainContainer = styled.div`
   min-height: 100vh;
@@ -171,6 +172,14 @@ function AnimatedRoutes() {
         />
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route
+  path="/projects"
+  element={
+    <PageWrapper>
+      <Projects />
+    </PageWrapper>
+  }
+/>
       </Routes>
     </AnimatePresence>
   );
