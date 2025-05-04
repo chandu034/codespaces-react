@@ -8,4 +8,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
+  server: {
+    historyApiFallback: true,
+  },
+  build: {
+    outDir: 'dist'
+  },
 })
