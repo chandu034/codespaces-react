@@ -140,6 +140,48 @@ const About = () => {
           </TimelineContent>
         </TimelineItem>
       </Timeline>
+      <Heading style={{ marginTop: '2.5rem' }}>🧑‍💻 Experience</Heading>
+<Timeline>
+  <TimelineItem>
+    <TimelineDot />
+    <TimelineContent>
+      <h4>Software Intern</h4>
+      <p>Ivoyant, Atlanta</p>
+      <p><i>Jan 2025 – Present</i></p>
+      <p>
+        Working on real-time web applications using React, Next.js, Redux Toolkit, and Firebase. Built dynamic UI workflows,
+        authentication flows, and reusable component libraries that improved development speed.
+      </p>
+    </TimelineContent>
+  </TimelineItem>
+
+  <TimelineItem>
+    <TimelineDot />
+    <TimelineContent>
+      <h4>Graduate Teaching Assistant</h4>
+      <p>Kennesaw State University</p>
+      <p><i>Aug 2023 – Dec 2024</i></p>
+      <p>
+        Conducted labs, mentored undergraduates in C#, Python, and Java programming. Supported grading, debugging, and
+        instructional planning for software courses.
+      </p>
+    </TimelineContent>
+  </TimelineItem>
+
+  <TimelineItem>
+    <TimelineDot />
+    <TimelineContent>
+      <h4>Frontend Developer</h4>
+      <p>Infosys, India</p>
+      <p><i>Nov 2021 – Aug 2023</i></p>
+      <p>
+        Delivered production-grade UI components using React.js and REST APIs. Collaborated with backend and QA teams to
+        deploy scalable business apps and dashboards.
+      </p>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+
     </AboutSection>
   );
 };
