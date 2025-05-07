@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+
 
 const blink = keyframes`
   50% { opacity: 0; }
@@ -92,7 +93,75 @@ const TimelineContent = styled.div`
   }
 `;
 
+const CollapsibleCard = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(42, 157, 143, 0.3);
+  padding: 1.25rem;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(42, 157, 143, 0.1);
+    box-shadow: 0 0 10px rgba(42, 157, 143, 0.2);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #2a9d8f;
+    text-shadow: 0 0 4px #2a9d8f55;
+  }
+
+  p {
+    color: #b5f5ec;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+`;
+
+const glitchCard = keyframes`
+  0% { transform: translate(0); box-shadow: 0 0 12px rgba(42, 157, 143, 0.15); }
+  20% { transform: translate(-1px, 1px); box-shadow: 2px 2px red; }
+  40% { transform: translate(1px, -1px); box-shadow: -2px -2px blue; }
+  60% { transform: translate(-1px, 1px); box-shadow: 1px -1px green; }
+  80% { transform: translate(1px, -1px); box-shadow: -1px 1px cyan; }
+  100% { transform: translate(0); box-shadow: 0 0 15px rgba(42, 157, 143, 0.3); }
+`;
+
+const SectionCard = styled.div`
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(42, 157, 143, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 15px rgba(42, 157, 143, 0.05);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    animation: ${glitchCard} 0.5s linear;
+  }
+`;
+
+const CardsWrapper = styled.div`
+    display: flex;
+  flex-direction: column;
+  gap: 2remt
+`;
+
+
+
+
 const About = () => {
+  const [showEducation, setShowEducation] = useState(false);
+const [showExperience, setShowExperience] = useState(false);
+
+const toggleEducation = () => setShowEducation(prev => !prev);
+const toggleExperience = () => setShowExperience(prev => !prev);
+
   return (
     <AboutSection>
       <Heading>About Me</Heading>
@@ -113,75 +182,91 @@ const About = () => {
         projects for fun.
       </Paragraph>
 
-      <Heading style={{ marginTop: '2.5rem' }}>🎓 Education</Heading>
-      <Timeline>
-        <TimelineItem>
-          <TimelineDot />
-          <TimelineContent>
-            <h4>Master of Science in Information Technology</h4>
-            <p>Kennesaw State University, Georgia, USA</p>
-            <p><i>Aug 2023 – Present</i></p>
-            <p>
-              Working as a Graduate Teaching Assistant. Involved in coursework related to Full-Stack Development,
-              Project Management, Cloud Computing, and Data Analytics.
-            </p>
-          </TimelineContent>
-        </TimelineItem>
+      <CardsWrapper>
+      {/* Education Section */}
+      <SectionCard onClick={toggleEducation}>
+  <Heading>🎓 Education</Heading>
+  {!showEducation ? (
+    <CollapsibleCard>
+      <h3>Master's & Bachelor's</h3>
+      <p>{showEducation ? "Click to collapse" : "Click to view full timeline"}</p>
+    </CollapsibleCard>
+  ) : (
+    <Timeline>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineContent>
+          <h4>Master of Science in Information Technology</h4>
+          <p>Kennesaw State University, Georgia, USA</p>
+          <p><i>Aug 2023 – Present</i></p>
+          <p>
+            Graduate TA | Full-Stack, Cloud, Analytics
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineContent>
+          <h4>Bachelor of Technology in Mechanical Engineering</h4>
+          <p>JNTU Kakinada, India</p>
+          <p><i>2017 – 2021</i></p>
+          <p>
+            CGPA: <strong>8.58</strong> | Core problem-solving foundation
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+  )}
+</SectionCard>
 
-        <TimelineItem>
-          <TimelineDot />
-          <TimelineContent>
-            <h4>Bachelor of Technology in Mechanical Engineering</h4>
-            <p>JNTU Kakinada, India</p>
-            <p><i>2017 – 2021</i></p>
-            <p>
-              Graduated with a CGPA of <strong>8.58</strong>. Developed strong analytical and problem-solving skills that still fuel my work as a developer today.
-            </p>
-          </TimelineContent>
-        </TimelineItem>
-      </Timeline>
-      <Heading style={{ marginTop: '2.5rem' }}>🧑‍💻 Experience</Heading>
-<Timeline>
-  <TimelineItem>
-    <TimelineDot />
-    <TimelineContent>
-      <h4>Software Intern</h4>
-      <p>Ivoyant, Atlanta</p>
-      <p><i>Jan 2025 – Present</i></p>
-      <p>
-        Working on real-time web applications using React, Next.js, Redux Toolkit, and Firebase. Built dynamic UI workflows,
-        authentication flows, and reusable component libraries that improved development speed.
-      </p>
-    </TimelineContent>
-  </TimelineItem>
 
-  <TimelineItem>
-    <TimelineDot />
-    <TimelineContent>
-      <h4>Graduate Teaching Assistant</h4>
-      <p>Kennesaw State University</p>
-      <p><i>Aug 2023 – Dec 2024</i></p>
-      <p>
-        Conducted labs, mentored undergraduates in C#, Python, and Java programming. Supported grading, debugging, and
-        instructional planning for software courses.
-      </p>
-    </TimelineContent>
-  </TimelineItem>
-
-  <TimelineItem>
-    <TimelineDot />
-    <TimelineContent>
-      <h4>Frontend Developer</h4>
-      <p>Infosys, India</p>
-      <p><i>Nov 2021 – Aug 2023</i></p>
-      <p>
-        Delivered production-grade UI components using React.js and REST APIs. Collaborated with backend and QA teams to
-        deploy scalable business apps and dashboards.
-      </p>
-    </TimelineContent>
-  </TimelineItem>
-</Timeline>
-
+      {/* Experience Section */}
+      <SectionCard  onClick={toggleExperience}>
+  <Heading>🧑‍💻 Experience</Heading>
+  {!showExperience ? (
+    <CollapsibleCard>
+      <h3>Infosys, KSU, Ivoyant</h3>
+      <p>{showExperience ? "Click to collapse" : "Click to view full timeline"}</p>
+    </CollapsibleCard>
+  ) : (
+    <Timeline>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineContent>
+          <h4>Software Intern</h4>
+          <p>Ivoyant, Atlanta</p>
+          <p><i>Jan 2025 – Present</i></p>
+          <p>
+            Built real-time UIs using React/Next.js, Redux Toolkit, and Firebase. Created modular components and dynamic workflows.
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineContent>
+          <h4>Graduate Teaching Assistant</h4>
+          <p>Kennesaw State University</p>
+          <p><i>Aug 2023 – Dec 2024</i></p>
+          <p>
+            Guided undergrads in C#/Python/Java labs, assisted in grading/debugging.
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineContent>
+          <h4>Frontend Developer</h4>
+          <p>Infosys, India</p>
+          <p><i>Nov 2021 – Aug 2023</i></p>
+          <p>
+            Delivered UI components with React.js, collaborated with teams to build dashboards and business apps.
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+  )}
+</SectionCard>
+</CardsWrapper>
     </AboutSection>
   );
 };
